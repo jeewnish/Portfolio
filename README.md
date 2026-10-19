@@ -1,75 +1,29 @@
-# React + TypeScript + Vite
+# Sloth OS portfolio starter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modular React + TypeScript desktop-style portfolio shell with a warm sticker-style sloth theme. The sloths are decorative for now; a full animated companion layer can come later.
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Dependencies used: `react-rnd`, `lucide-react` (install them if your existing project does not already have them).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Add your assets and details
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Wallpaper is `public/assets/wallpaper.avif` (your `bg.avif`). Swap the file or change the URL in `src/styles/desktop.css`.
+- All artwork lives in `public/assets/` (transparent `.webp` cut-outs from `assets.rar`). App icons are set per app in `src/data/apps.ts`.
+- Put your CV at `public/cv.pdf`.
+- Update placeholder name, bio, social links and CV details in `src/components/windows/WindowContent.tsx`.
+- Update project cards in the same file; later, move the project list into a dedicated `src/data/projects.ts` file.
+- Update app names and default window dimensions in `src/data/apps.ts`.
+- The sloth companion layer can be added to `src/components/desktop/Desktop.tsx` after the window manager is stable.
 
-```
+## Notes
+
+- Desktop shortcuts are opened with a double-click; dock icons open/focus apps with one click.
+- Terminal and Arcade are placeholders, not fully implemented applications yet.
+- The browser window is a portfolio link launcher, not a general-purpose web browser.
+- Replace `yourusername` in social links before publishing.

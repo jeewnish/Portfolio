@@ -1,0 +1,41 @@
+[
+  {
+    "id": "ai-pdf-assistant",
+    "title": "AI PDF Assistant",
+    "category": "AI/ML",
+    "shortDescription": "Ask questions about documents using AI with fast contextual answers.",
+    "fullDescription": "An intelligent conversational interface built to query and extract insights from documents and PDFs using large language models and vector retrieval.",
+    "technologies": ["Python", "Streamlit", "LangChain", "OpenAI"],
+    "thumbnail": "file.webp",
+    "githubUrl": "https://github.com/jeewnish",
+    "liveUrl": "",
+    "status": "Completed",
+    "featured": true
+  },
+  {
+    "id": "wastezero-lk",
+    "title": "WasteZero.lk",
+    "category": "Web App",
+    "shortDescription": "A marketplace connecting recyclable waste generators with verified buyers.",
+    "fullDescription": "A community-focused sustainability platform designed to streamline circular economy recycling pipelines, track waste collection, and facilitate trading.",
+    "technologies": ["React", "TypeScript", "Node.js", "MongoDB"],
+    "thumbnail": "file.webp",
+    "githubUrl": "https://github.com/jeewnish",
+    "liveUrl": "",
+    "status": "Completed",
+    "featured": true
+  },
+  {
+    "id": "smartpresence",
+    "title": "SmartPresence",
+    "category": "Ongoing",
+    "shortDescription": "Attendance management system with proximity and biometric validation.",
+    "fullDescription": "Enterprise-grade digital attendance and location verification system ensuring tamper-proof presence tracking for academic and corporate organizations.",
+    "technologies": ["Spring Boot", "PostgreSQL", "Docker", "REST API"],
+    "thumbnail": "file.webp",
+    "githubUrl": "https://github.com/jeewnish",
+    "liveUrl": "",
+    "status": "In Progress",
+    "featured": true
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "category": "Programming Languages",
+    "description": "Core languages used across development and automation",
+    "skills": ["Java", "Python", "TypeScript", "JavaScript", "SQL"]
+  },
+  {
+    "category": "Frontend Development",
+    "description": "Building modern, accessible web interfaces",
+    "skills": ["React", "HTML5", "CSS3 / Vanilla CSS", "Vite"]
+  },
+  {
+    "category": "Backend Development",
+    "description": "API design, business logic, and microservices",
+    "skills": ["Spring Boot", "Node.js", "Express", "RESTful APIs"]
+  },
+  {
+    "category": "Databases",
+    "description": "Relational and document storage systems",
+    "skills": ["PostgreSQL", "MySQL", "MongoDB"]
+  },
+  {
+    "category": "Cloud & DevOps",
+    "description": "Infrastructure, containerization, and cloud services",
+    "skills": ["AWS (EC2, S3, IAM)", "Docker", "Git", "GitHub Actions", "Linux / Bash"]
+  },
+  {
+    "category": "Tools & Methodologies",
+    "description": "Everyday productivity and engineering practices",
+    "skills": ["Postman", "VS Code", "Agile / Scrum", "Jira"]
+  }
+]

@@ -1,0 +1,41 @@
+.desktop{position:fixed;inset:0;overflow:hidden;isolation:isolate;background:#4a2f5e}
+.wallpaper{position:absolute;inset:0;background:url('/public/assets/bg.webp') center bottom/cover no-repeat,linear-gradient(180deg,#6a4a98,#f0a081 70%,#f7c78a);z-index:-2}
+.desktop-vignette{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(40,20,50,.25),transparent 25%,transparent 70%,rgba(40,20,30,.25));z-index:-1}
+
+/* desktop icons */
+.desktop-shortcuts{position:absolute;top:18px;left:18px;display:flex;flex-direction:column;gap:10px;z-index:1}
+.desktop-shortcut{width:92px;padding:8px 4px 6px;border:2px solid transparent;background:transparent;border-radius:14px;display:flex;align-items:center;flex-direction:column;gap:5px;font-family:var(--display);font-size:13px;font-weight:700;color:#fff;transition:transform .15s,background .15s,border-color .15s}
+.desktop-shortcut span{padding:0 8px;border-radius:999px;background:rgba(59,36,23,.78);line-height:1.5}
+.desktop-shortcut:hover,.desktop-shortcut:focus-visible{background:rgba(255,244,220,.28);border-color:rgba(255,244,220,.7);transform:translateY(-2px)}
+.shortcut-icon{width:58px;height:54px;object-fit:contain;filter:drop-shadow(0 3px 0 rgba(59,36,23,.45))}
+
+/* window management layer - occupies full viewport down to the dock */
+.window-layer{position:absolute;inset:0 0 74px;z-index:2;pointer-events:none}.window-layer>*{pointer-events:auto}
+
+/* sloth companions */
+.sloth{position:absolute;pointer-events:none;user-select:none;filter:drop-shadow(0 3px 0 rgba(59,36,23,.35))}
+.sloth-hanging{z-index:10002;top:0;right:130px;height:150px;transform-origin:50% 0;animation:sway 4.5s ease-in-out infinite}
+.sloth-reclining{z-index:10002;bottom:70px;right:36px;width:150px}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+
+/* dock */
+.taskbar{position:absolute;z-index:10000;left:0;right:0;bottom:0;height:74px;padding:0 22px;display:flex;align-items:center;justify-content:center;background:var(--wood);border-top:3px solid var(--line);box-shadow:inset 0 3px 0 rgba(255,225,170,.25)}
+.dock{display:flex;align-items:center;gap:10px;padding:7px 14px;border:3px solid var(--line);border-radius:20px;background:var(--paper);box-shadow:0 4px 0 var(--wood-dark)}
+.dock-app{position:relative;width:52px;height:52px;display:grid;place-items:center;padding:0;border:2px solid transparent;border-radius:14px;background:transparent;transition:transform .16s,background .16s}
+.dock-app img{width:42px;height:40px;object-fit:contain;filter:drop-shadow(0 2px 0 rgba(59,36,23,.3))}
+.dock-app:hover{transform:translateY(-7px) scale(1.08);background:var(--paper-2)}
+.dock-app.is-running{border-color:var(--line);background:var(--paper-2)}
+.running-dot{position:absolute;bottom:-7px;width:7px;height:7px;border-radius:50%;background:var(--leaf);border:2px solid var(--line)}
+.taskbar-right{position:absolute;right:24px;display:flex;align-items:center;gap:14px;color:var(--paper)}
+.taskbar-right>a{opacity:.9;display:grid;place-items:center}
+.clock{text-align:right;font-family:'DM Mono',monospace;font-size:12px;font-weight:500}.clock small{display:block;margin-top:3px;color:#f2d9b0;font-family:Nunito,sans-serif;font-size:10px;font-weight:700}
+
+.primary-button{padding:10px 16px;border:3px solid var(--line);border-radius:12px;background:var(--accent);color:var(--ink);font-family:var(--display);font-weight:700;box-shadow:0 3px 0 var(--wood-dark)}
+.primary-button:disabled{opacity:.55;cursor:not-allowed}
+
+@media(max-width:650px){
+  .desktop-shortcuts{top:12px;left:6px;gap:4px}.desktop-shortcut{width:70px;font-size:11px}.shortcut-icon{width:44px;height:42px}
+  .taskbar{height:68px;padding:0 8px;justify-content:flex-start}.dock{gap:4px;padding:5px 8px}.dock-app{width:42px;height:44px}.dock-app img{width:34px;height:32px}
+  .taskbar-right{right:10px}.taskbar-right>a{display:none}.window-layer{inset:0 0 68px}
+  .sloth-hanging{height:100px;right:20px}.sloth-reclining{width:100px;right:10px;bottom:62px}
+}
