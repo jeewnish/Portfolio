@@ -42,7 +42,7 @@ export default function AboutWindow() {
             LinkedIn ↗
           </a>
           {about.resumeUrl && (
-            <a href={about.resumeUrl} download>
+            <a href="/cv/cv.pdf" download>
               Download CV ↓
             </a>
           )}

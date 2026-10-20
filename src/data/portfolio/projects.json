@@ -1,26 +1,20 @@
 [
   {
-    "id": "ai-pdf-assistant",
-    "title": "AI PDF Assistant",
-    "category": "AI/ML",
-    "shortDescription": "Ask questions about documents using AI with fast contextual answers.",
-    "fullDescription": "An intelligent conversational interface built to query and extract insights from documents and PDFs using large language models and vector retrieval.",
-    "technologies": ["Python", "Streamlit", "LangChain", "OpenAI"],
-    "thumbnail": "file.webp",
-    "githubUrl": "https://github.com/jeewnish",
-    "liveUrl": "",
-    "status": "Completed",
-    "featured": true
-  },
-  {
-    "id": "wastezero-lk",
-    "title": "WasteZero.lk",
-    "category": "Web App",
-    "shortDescription": "A marketplace connecting recyclable waste generators with verified buyers.",
-    "fullDescription": "A community-focused sustainability platform designed to streamline circular economy recycling pipelines, track waste collection, and facilitate trading.",
-    "technologies": ["React", "TypeScript", "Node.js", "MongoDB"],
-    "thumbnail": "file.webp",
-    "githubUrl": "https://github.com/jeewnish",
+    "id": "multi-pdf-chatbot",
+    "title": "Multi-PDF Chatbot",
+    "category": "AI / Machine Learning",
+    "shortDescription": "An AI-powered chatbot that allows users to upload multiple PDF documents and ask questions about their content.",
+    "fullDescription": "Multi-PDF Chatbot is an AI application designed to make document analysis easier. Users can interact with multiple PDF files through natural language queries and receive relevant answers based on document content. The project demonstrates PDF processing, conversational AI, document retrieval, and language model integration.",
+    "technologies": [
+      "Python",
+      "Streamlit",
+      "LangChain",
+      "FAISS",
+      "Hugging Face",
+      "Ollama"
+    ],
+    "thumbnail": "/images/projects/multi-pdf-chatbot.png",
+    "githubUrl": "https://github.com/jeewnish/multi-pdf-chatbot",
     "liveUrl": "",
     "status": "Completed",
     "featured": true
@@ -28,14 +22,35 @@
   {
     "id": "smartpresence",
     "title": "SmartPresence",
-    "category": "Ongoing",
-    "shortDescription": "Attendance management system with proximity and biometric validation.",
-    "fullDescription": "Enterprise-grade digital attendance and location verification system ensuring tamper-proof presence tracking for academic and corporate organizations.",
-    "technologies": ["Spring Boot", "PostgreSQL", "Docker", "REST API"],
-    "thumbnail": "file.webp",
-    "githubUrl": "https://github.com/jeewnish",
+    "category": "Full-Stack Development",
+    "shortDescription": "A smart university attendance management system designed to simplify and secure student attendance tracking.",
+    "fullDescription": "SmartPresence is a university attendance management project focused on digitizing the attendance process. It aims to reduce manual work, improve attendance accuracy, and provide a more efficient way to manage student attendance records through modern software technologies.",
+    "technologies": [
+      "Java",
+      "Spring Boot",
+      "PostgreSQL",
+      "Clerk",
+      "JWT",
+      "Bluetooth Low Energy (BLE)",
+      "REST API"
+    ],
+    "thumbnail": "/images/projects/smartpresence.png",
+    "githubUrl": "https://github.com/jeewnish/SmartPresence",
     "liveUrl": "",
-    "status": "In Progress",
+    "status": "Completed",
     "featured": true
+  },
+  {
+    "id": "url-shortener",
+    "title": "URL Shortener",
+    "category": "Web Development",
+    "shortDescription": "A containerised web application that converts long URLs into short, shareable links for easier access and sharing.",
+    "fullDescription": "URL Shortener is a web development project designed to simplify long web addresses by generating shorter links. It demonstrates core concepts of URL processing, link redirection, and web application development.",
+    "technologies": ["javascript", "Docker"],
+    "thumbnail": "/images/projects/url-shortener.png",
+    "githubUrl": "https://github.com/jeewnish/URL-Shortener",
+    "liveUrl": "",
+    "status": "Completed",
+    "featured": false
   }
 ]
