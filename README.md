@@ -1,8 +1,8 @@
 # Sloth-OS portfolio
 
 
-![aboutme and projects.webp](aboutme and projects.webp)
+![About Me and Projects](./aboutme%20and%20projects.webp)
 
-![aboutme and terminal.webp](aboutme and terminal.webp)
+![About Me and Terminal](./aboutme%20and%20terminal.webp)
 
-![browser and game.webp](browser and game.webp)
+![Browser and Game](./browser%20and%20game.webp)
