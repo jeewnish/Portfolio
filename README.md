@@ -1,5 +1,8 @@
-# Sloth OS portfolio
-
-![img_4.png](img_4.png)
+# Sloth-OS portfolio
 
 
+![aboutme and projects.png](aboutme and projects.png)
+
+![aboutme and terminal.png](aboutme and terminal.png)
+
+![browser and game.png](browser and game.png)
