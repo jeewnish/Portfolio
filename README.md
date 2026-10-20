@@ -1,8 +1,8 @@
 # Sloth-OS portfolio
 
 
-![aboutme and projects.png](aboutme and projects.png)
+![aboutme and projects.webp](aboutme and projects.webp)
 
-![aboutme and terminal.png](aboutme and terminal.png)
+![aboutme and terminal.webp](aboutme and terminal.webp)
 
-![browser and game.png](browser and game.png)
+![browser and game.webp](browser and game.webp)
