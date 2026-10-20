@@ -4,5 +4,6 @@ import App from "./App";
 import "./styles/global.css";
 import "./styles/desktop.css";
 import "./styles/windows.css";
+import "./styles/responsive.css";
 
 createRoot(document.getElementById("root")!).render(<StrictMode><App /></StrictMode>);

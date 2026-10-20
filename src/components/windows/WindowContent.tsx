@@ -33,27 +33,53 @@ export default function WindowContent({ id, onOpenProject }: WindowContentProps)
 
     case "browser":
       return (
-        <section className="browser-content">
+        <section className="browser-content" role="region" aria-label="Web Browser preview">
           <div className="browser-toolbar">
-            <span><FaArrowLeft size={20} color="black" /></span>
-            <span><FaArrowRight size={20} color="black" /></span>
-            <span><FaRedo size={20} color="black" /></span>
-            <div className="address-bar">https://sloth-portfolio</div>
+            <button
+              type="button"
+              className="browser-nav-btn"
+              aria-label="Back"
+              title="Back"
+              onClick={() => {}}
+            >
+              <FaArrowLeft size={16} color="currentColor" />
+            </button>
+            <button
+              type="button"
+              className="browser-nav-btn"
+              aria-label="Forward"
+              title="Forward"
+              onClick={() => {}}
+            >
+              <FaArrowRight size={16} color="currentColor" />
+            </button>
+            <button
+              type="button"
+              className="browser-nav-btn"
+              aria-label="Reload"
+              title="Reload"
+              onClick={() => {}}
+            >
+              <FaRedo size={16} color="currentColor" />
+            </button>
+            <div className="address-bar" title="https://sloth-portfolio">
+              https://sloth-portfolio
+            </div>
           </div>
           <div className="app-content browser-home">
             <img className="browser-mark" src={assetUrl("chrome.webp")} alt="" draggable={false} />
             <h2>Explore my work</h2>
             <p className="muted">Choose a destination to continue.</p>
-            <a className="destination" href={githubUrl} target="_blank" rel="noreferrer">
-              <FaGithub size={28} color="black" />{" "}
+            <a className="destination" href={githubUrl} target="_blank" rel="noreferrer" aria-label="Visit GitHub Repositories">
+              <FaGithub size={26} color="currentColor" />{" "}
               <span>
                 <b>GitHub</b>
                 <small>{contact.github ? contact.github.replace("https://", "") : "Code repositories"}</small>
               </span>{" "}
               ↗
             </a>
-            <a className="destination" href={linkedinUrl} target="_blank" rel="noreferrer">
-              <FaLinkedin size={28} color="black" />{" "}
+            <a className="destination" href={linkedinUrl} target="_blank" rel="noreferrer" aria-label="Visit LinkedIn Profile">
+              <FaLinkedin size={26} color="currentColor" />{" "}
               <span>
                 <b>LinkedIn</b>
                 <small>Professional profile & network</small>
@@ -61,8 +87,8 @@ export default function WindowContent({ id, onOpenProject }: WindowContentProps)
               ↗
             </a>
             {contact.email && (
-              <a className="destination" href={`mailto:${contact.email}`}>
-                <FaEnvelope size={28} color="black" />{" "}
+              <a className="destination" href={`mailto:${contact.email}`} aria-label={`Send email to ${contact.email}`}>
+                <FaEnvelope size={26} color="currentColor" />{" "}
                 <span>
                   <b>Email</b>
                   <small>{contact.email}</small>

@@ -105,8 +105,8 @@ export default function ProjectsWindow({ initialSelectedProjectId }: ProjectsWin
         </div>
       </div>
 
-      {/* Category filter tabs */}
-      <div className="project-category-filters" role="tablist">
+      {/* Category filter tabs with responsive scrolling */}
+      <div className="project-category-filters" role="tablist" aria-label="Project categories">
         {categories.map(cat => (
           <button
             key={cat}

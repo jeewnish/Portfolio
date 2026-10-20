@@ -1,16 +1,32 @@
 import { useMemo } from "react";
-import { getAbout } from "../../services/portfolioService";
+import { getAbout, getContact } from "../../services/portfolioService";
 import { assetUrl } from "../../data/apps";
 
 export default function AboutWindow() {
   const about = useMemo(() => getAbout(), []);
+  const contact = useMemo(() => getContact(), []);
+
+  const githubUrl = contact.github || "https://github.com/jeewnish";
+  const linkedinUrl = contact.linkedin
+    ? contact.linkedin.startsWith("http")
+      ? contact.linkedin
+      : `https://${contact.linkedin}`
+    : "https://www.linkedin.com";
 
   return (
     <section className="app-content about-content">
       <div className="avatar-frame">
-        <img src={assetUrl(about.avatar || "me.webp")} alt={about.name} draggable={false} />
+        <img
+          src={assetUrl(about.avatar || "me.webp")}
+          alt={about.name || "Profile avatar"}
+          draggable={false}
+          onError={e => {
+            // Fallback if avatar fails to load
+            (e.currentTarget as HTMLImageElement).src = assetUrl("face.webp");
+          }}
+        />
       </div>
-      <div>
+      <div className="about-details">
         <h2>{about.name}</h2>
         <p className="muted">{about.headline}</p>
 
@@ -31,18 +47,23 @@ export default function AboutWindow() {
         )}
 
         <div className="content-actions">
-          <a href="https://github.com/jeewnish" target="_blank" rel="noreferrer">
-            GitHub ↗
-          </a>
-          <a
-            href="https://www.linkedin.com/in/jeew-ekanayaka-432439295"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn ↗
-          </a>
+          {githubUrl && (
+            <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="Visit GitHub Profile">
+              GitHub ↗
+            </a>
+          )}
+          {linkedinUrl && (
+            <a href={linkedinUrl} target="_blank" rel="noreferrer" aria-label="Visit LinkedIn Profile">
+              LinkedIn ↗
+            </a>
+          )}
+          {contact.email && (
+            <a href={`mailto:${contact.email}`} aria-label={`Email ${contact.email}`}>
+              Email ✉
+            </a>
+          )}
           {about.resumeUrl && (
-            <a href="/cv/cv.pdf" download>
+            <a href="/cv/cv.pdf" download="Jeew_Ekanayaka_CV.pdf" aria-label="Download CV">
               Download CV ↓
             </a>
           )}

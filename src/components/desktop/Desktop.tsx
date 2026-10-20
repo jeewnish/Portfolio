@@ -1,8 +1,9 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import type { DesktopWindow, WindowId } from "../../types";
 import { apps, assetUrl } from "../../data/apps";
 import Taskbar from "./Taskbar";
 import WindowFrame from "../windows/WindowFrame";
+import { useViewport } from "../../hooks/useViewport";
 
 const initialWindows: DesktopWindow[] = apps.map((app, i) => ({
   id: app.id,
@@ -67,17 +68,41 @@ function reducer(state: DesktopWindow[], action: Action): DesktopWindow[] {
 
 export default function Desktop() {
   const [windows, dispatch] = useReducer(reducer, initialWindows);
+  const { isMobile, isTablet, width: vpWidth, height: vpHeight } = useViewport();
 
-  const appClick = (id: WindowId) => {
+  // Centralized single-click activation logic:
+  // - If closed: open and focus
+  // - If minimized: restore and focus
+  // - If open but behind: bring to foreground and focus
+  // - If already visible and focused: keep focused
+  const handleAppActivation = (id: WindowId) => {
     const w = windows.find(item => item.id === id);
-    if (!w?.isOpen) dispatch({ type: "OPEN", id });
-    else if (w.isMinimized) dispatch({ type: "OPEN", id });
-    else dispatch({ type: "FOCUS", id });
+    if (!w) return;
+
+    if (!w.isOpen || w.isMinimized) {
+      dispatch({ type: "OPEN", id });
+    } else {
+      dispatch({ type: "FOCUS", id });
+    }
   };
 
   const handleOpenProject = (_projectId?: string) => {
-    appClick("projects");
+    handleAppActivation("projects");
   };
+
+  // Add a class to body when a mobile window is open to dim/hide desktop shortcuts
+  const anyOpenOnMobile = isMobile && windows.some(w => w.isOpen && !w.isMinimized);
+
+  useEffect(() => {
+    if (anyOpenOnMobile) {
+      document.body.classList.add("mobile-app-open");
+    } else {
+      document.body.classList.remove("mobile-app-open");
+    }
+    return () => {
+      document.body.classList.remove("mobile-app-open");
+    };
+  }, [anyOpenOnMobile]);
 
   return (
     <main className="desktop">
@@ -85,15 +110,22 @@ export default function Desktop() {
       <div className="wallpaper" />
       <div className="desktop-vignette" />
 
-      {/* Desktop shortcuts starting from top-left */}
-      <div className="desktop-shortcuts">
+      {/* Desktop shortcuts with single-click activation & keyboard support */}
+      <div className="desktop-shortcuts" role="toolbar" aria-label="Desktop Applications">
         {apps.map(({ id, label, icon }) => (
           <button
             key={id}
+            id={`desktop-shortcut-${id}`}
             className="desktop-shortcut"
-            onDoubleClick={() => appClick(id)}
-            onClick={() => dispatch({ type: "FOCUS", id })}
-            title={`Double-click to open ${label}`}
+            onClick={() => handleAppActivation(id)}
+            onKeyDown={e => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleAppActivation(id);
+              }
+            }}
+            title={`Open ${label}`}
+            aria-label={`Open ${label}`}
           >
             <img className="shortcut-icon" src={assetUrl(icon)} alt="" draggable={false} />
             <span>{label}</span>
@@ -107,6 +139,10 @@ export default function Desktop() {
           <WindowFrame
             key={w.id}
             windowState={w}
+            isMobile={isMobile}
+            isTablet={isTablet}
+            viewportWidth={vpWidth}
+            viewportHeight={vpHeight}
             onFocus={() => dispatch({ type: "FOCUS", id: w.id })}
             onClose={() => dispatch({ type: "CLOSE", id: w.id })}
             onMinimize={() => dispatch({ type: "MINIMIZE", id: w.id })}
@@ -124,7 +160,8 @@ export default function Desktop() {
       <img className="sloth sloth-reclining" src={assetUrl("reclining_sloth.webp")} alt="" draggable={false} />
 
       {/* Bottom taskbar dock */}
-      <Taskbar windows={windows} onAppClick={appClick} />
+      <Taskbar windows={windows} onAppClick={handleAppActivation} isMobile={isMobile} />
     </main>
   );
 }
+

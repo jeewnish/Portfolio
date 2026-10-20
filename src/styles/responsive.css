@@ -1,0 +1,508 @@
+/* Responsive System Variables & Utilities */
+:root {
+  --dock-height: 74px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --window-inset-desktop: 10px;
+  --window-inset-mobile: 0px;
+}
+
+/* Responsive Window Layer */
+.window-layer {
+  position: absolute;
+  inset: 0 0 calc(var(--dock-height) + var(--safe-bottom)) 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.window-layer > * {
+  pointer-events: auto;
+}
+
+/* Mobile & Fullscreen Window Shell rules */
+.is-mobile-window {
+  border-radius: 0 !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.mobile-back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 12px;
+  min-height: 36px;
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper-2);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--wood-dark);
+}
+
+.mobile-back-btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Active app visibility on mobile */
+body.mobile-app-open .desktop-shortcuts {
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* Desktop Breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .desktop-shortcuts {
+    top: 24px;
+    left: 24px;
+    gap: 12px;
+  }
+}
+
+/* Tablet Breakpoint (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --dock-height: 70px;
+  }
+
+  .desktop-shortcuts {
+    top: 16px;
+    left: 16px;
+    gap: 10px;
+  }
+
+  .desktop-shortcut {
+    width: 82px;
+    font-size: 12px;
+    min-height: 44px;
+  }
+
+  .shortcut-icon {
+    width: 50px;
+    height: 48px;
+  }
+
+  .taskbar {
+    height: var(--dock-height);
+    padding: 0 16px;
+  }
+
+  .dock {
+    gap: 8px;
+    padding: 6px 12px;
+  }
+
+  .dock-app {
+    width: 48px;
+    height: 48px;
+  }
+
+  .dock-app img {
+    width: 38px;
+    height: 36px;
+  }
+
+  .about-content {
+    grid-template-columns: 120px 1fr;
+    gap: 18px;
+  }
+
+  .avatar-frame {
+    width: 120px;
+    height: 120px;
+  }
+
+  .avatar-frame img {
+    width: 104px;
+    height: 104px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .sloth-hanging {
+    height: 120px;
+    right: 80px;
+  }
+
+  .sloth-reclining {
+    width: 120px;
+    right: 20px;
+    bottom: 68px;
+  }
+}
+
+/* Mobile Breakpoint (320px - 767px) */
+@media (max-width: 767px) {
+  :root {
+    --dock-height: 64px;
+  }
+
+  /* Full screen viewport */
+  .desktop {
+    width: 100vw;
+    height: 100dvh;
+    height: 100vh;
+  }
+
+  /* Desktop shortcuts in a responsive grid */
+  .desktop-shortcuts {
+    top: calc(14px + var(--safe-top));
+    left: calc(12px + var(--safe-left));
+    right: calc(12px + var(--safe-right));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    gap: 10px;
+    justify-items: center;
+    max-width: 420px;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .desktop-shortcut {
+    width: 76px;
+    min-height: 74px;
+    padding: 8px 4px 6px;
+    font-size: 11px;
+    touch-action: manipulation;
+  }
+
+  .shortcut-icon {
+    width: 46px;
+    height: 44px;
+  }
+
+  .desktop-shortcut span {
+    font-size: 11px;
+    padding: 1px 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 74px;
+  }
+
+  /* Taskbar / Dock on Mobile */
+  .taskbar {
+    height: calc(var(--dock-height) + var(--safe-bottom));
+    padding: 4px 10px calc(4px + var(--safe-bottom)) 10px;
+    justify-content: space-between;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dock {
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 16px;
+    flex-shrink: 0;
+  }
+
+  .dock-app {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .dock-app img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .taskbar-right {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+
+  .taskbar-right > a {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .clock {
+    font-size: 11px;
+  }
+
+  .clock small {
+    display: none;
+  }
+
+  /* Sloth companions on mobile: stay subtle or hidden so they don't block interactions */
+  .sloth-hanging {
+    height: 80px;
+    right: 12px;
+    opacity: 0.7;
+  }
+
+  .sloth-reclining {
+    display: none;
+  }
+
+  /* Window shell on mobile */
+  .window-shell {
+    border-radius: 12px 12px 0 0;
+    border-width: 2px;
+    box-shadow: none;
+  }
+
+  .window-titlebar {
+    height: 44px;
+    flex: 0 0 44px;
+    padding: 0 10px;
+    gap: 8px;
+    cursor: default;
+  }
+
+  .window-titlebar .control {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+
+  .window-titlebar .control img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .window-title {
+    font-size: 15px;
+  }
+
+  .title-spacer {
+    display: none;
+  }
+
+  .mobile-close-action {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    background: var(--paper-2);
+    border: 2px solid var(--line);
+    border-radius: 8px;
+    color: var(--ink);
+    min-height: 32px;
+  }
+
+  /* About Me Window on Mobile */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .about-content .avatar-frame {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .about-content .avatar-frame img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .about-content h2 {
+    font-size: 24px;
+  }
+
+  .about-content p {
+    text-align: left;
+    font-size: 13px;
+    word-break: break-word;
+  }
+
+  .about-content .content-actions {
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .content-actions a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 13px;
+    flex: 1 1 130px;
+    text-align: center;
+  }
+
+  /* Projects Window on Mobile */
+  .projects-head {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .projects-head img {
+    height: 48px;
+  }
+
+  .project-category-filters {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    gap: 6px;
+    margin: 12px 0 10px 0;
+  }
+
+  .project-filter-btn {
+    flex-shrink: 0;
+    min-height: 36px;
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .project-card {
+    padding: 12px;
+    min-height: 44px;
+  }
+
+  .project-art {
+    height: 70px;
+    font-size: 26px;
+  }
+
+  .project-detail-view {
+    padding: 16px;
+  }
+
+  .project-back-btn {
+    min-height: 40px;
+    padding: 8px 14px;
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .project-detail-header h2 {
+    font-size: 22px;
+  }
+
+  /* Browser Window on Mobile */
+  .browser-toolbar {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .browser-nav-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  .browser-nav-btn:active {
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .address-bar {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .browser-home {
+    padding: 16px 12px;
+  }
+
+  .browser-mark {
+    width: 70px;
+  }
+
+  .destination {
+    padding: 10px 12px;
+    min-height: 48px;
+    gap: 10px;
+  }
+
+  .destination b {
+    font-size: 15px;
+  }
+
+  /* Terminal on Mobile */
+  .terminal-wrapper {
+    font-size: 12px;
+  }
+
+  .terminal-scroll-area {
+    padding: 12px 14px 8px 14px;
+  }
+
+  .terminal-input-container {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .terminal-input-field {
+    font-size: 14px; /* Prevents auto-zoom on iOS */
+    min-height: 32px;
+  }
+
+  .terminal-sloth-mascot {
+    display: none; /* mascot can obstruct long output on small screens */
+  }
+
+  .terminal-link-btn {
+    min-height: 36px;
+    padding: 6px 12px;
+  }
+}
+
+/* Touch device active feedback */
+@media (hover: none) and (pointer: coarse) {
+  .desktop-shortcut:active {
+    background: rgba(255, 244, 220, 0.4);
+    transform: scale(0.96);
+  }
+
+  .dock-app:active {
+    transform: scale(0.92);
+  }
+
+  .project-card:active {
+    transform: scale(0.98);
+  }
+}

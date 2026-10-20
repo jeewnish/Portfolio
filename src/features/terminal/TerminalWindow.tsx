@@ -103,8 +103,9 @@ export default function TerminalWindow({ onOpenProject }: TerminalWindowProps) {
 
   // Click anywhere in terminal focuses the prompt
   const handleTerminalClick = (e: React.MouseEvent) => {
-    // Don't steal focus if clicking an anchor link
-    if ((e.target as HTMLElement).tagName.toLowerCase() === "a") {
+    // Don't steal focus if clicking an anchor link or button
+    const target = e.target as HTMLElement;
+    if (target.tagName.toLowerCase() === "a" || target.tagName.toLowerCase() === "button") {
       return;
     }
     inputRef.current?.focus();
