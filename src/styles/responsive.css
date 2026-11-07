@@ -319,14 +319,18 @@ body.mobile-app-open .desktop-shortcuts {
   }
 
   .about-content .avatar-frame {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin: 0;
   }
 
   .about-content .avatar-frame img {
-    width: 88px;
-    height: 88px;
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+    object-position: left center;
   }
 
   .about-content h2 {
