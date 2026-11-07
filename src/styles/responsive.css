@@ -312,17 +312,24 @@ body.mobile-app-open .desktop-shortcuts {
   .about-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: stretch;
+    text-align: left;
     padding: 16px;
     gap: 16px;
+  }
+
+  .about-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 
   .about-content .avatar-frame {
     width: 130px;
     height: 130px;
     flex-shrink: 0;
-    align-self: flex-start;
+    align-self: center;
     margin: 0;
   }
 
@@ -337,10 +344,19 @@ body.mobile-app-open .desktop-shortcuts {
     font-size: 24px;
   }
 
+  .about-intro-card {
+    width: 100%;
+    text-align: center;
+  }
+
   .about-content p {
     text-align: left;
     font-size: 13px;
     word-break: break-word;
+  }
+
+  .about-intro-card p {
+    text-align: center;
   }
 
   .about-content .content-actions {

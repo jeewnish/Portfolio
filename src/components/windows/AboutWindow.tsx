@@ -15,38 +15,42 @@ export default function AboutWindow() {
 
   return (
     <section className="app-content about-content">
-      <div className="avatar-frame">
-        <img
-          src={assetUrl(about.avatar || "me.webp")}
-          alt={about.name || "Profile avatar"}
-          draggable={false}
-          onError={e => {
-            // Fallback if avatar fails to load
-            (e.currentTarget as HTMLImageElement).src = assetUrl("face.webp");
-          }}
-        />
-      </div>
-      <div className="about-details">
-        <h2>{about.name}</h2>
-        <p className="muted">{about.headline}</p>
+      <header className="about-profile">
+        <div className="avatar-frame">
+          <img
+            src={assetUrl(about.avatar || "me.webp")}
+            alt={`Portrait of ${about.name || "Jeew Ekanayaka"}`}
+            draggable={false}
+            onError={e => {
+              (e.currentTarget as HTMLImageElement).src = assetUrl("face.webp");
+            }}
+          />
+        </div>
 
-        {about.shortBio && <p>{about.shortBio}</p>}
-        {about.fullBio && <p>{about.fullBio}</p>}
+        <div className="about-intro-card">
+          <h2>{about.name}</h2>
+          <p className="muted">{about.headline}</p>
+        </div>
+      </header>
+
+      <div className="about-details">
+        <div className="about-bio">
+          {about.shortBio && <p>{about.shortBio}</p>}
+          {about.fullBio && <p>{about.fullBio}</p>}
+        </div>
 
         {about.currentInterests && about.currentInterests.length > 0 && (
-          <div style={{ margin: "14px 0" }}>
-            <h4 style={{ margin: "0 0 6px", fontSize: "14px", fontFamily: "var(--display)" }}>
-              Current Focus & Interests:
-            </h4>
-            <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "13px", lineHeight: "1.6" }}>
-              {about.currentInterests.map((interest, idx) => (
-                <li key={idx}>{interest}</li>
+          <section className="about-interests" aria-labelledby="about-interests-title">
+            <h3 id="about-interests-title">Current Focus &amp; Interests:</h3>
+            <ul>
+              {about.currentInterests.map(interest => (
+                <li key={interest}>{interest}</li>
               ))}
             </ul>
-          </div>
+          </section>
         )}
 
-        <div className="content-actions">
+        <nav className="content-actions" aria-label="About links">
           {githubUrl && (
             <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="Visit GitHub Profile">
               GitHub ↗
@@ -67,7 +71,7 @@ export default function AboutWindow() {
               Download CV ↓
             </a>
           )}
-        </div>
+        </nav>
       </div>
     </section>
   );

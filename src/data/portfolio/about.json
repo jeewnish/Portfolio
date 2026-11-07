@@ -1,8 +1,8 @@
 {
   "name": "Jeew Ekanayaka",
-  "headline": "Computing and Information System Undergraduate(SUSL)",
+  "headline": "Computing and Information Systems Undergraduate (SUSL)",
   "shortBio": "Welcome to my little corner of the internet. I build software, explore new technologies, and turn ideas into useful projects.",
-  "fullBio": "I'm interested in DevOps and Cloud engineering. Currently working towards AWS certifications and building scalable, reliable distributed systems and web applications.",
+  "fullBio": "I'm interested in DevOps and Cloud Engineering. Currently working towards AWS certifications and building scalable, reliable distributed systems and web applications.",
   "location": "Sri Lanka",
   "avatar": "me.webp",
   "resumeUrl": "/cv.pdf",
@@ -10,6 +10,7 @@
     "BSc (Hons) in Computing and Information Systems (Undergraduate)"
   ],
   "currentInterests": [
+    "Web Development",
     "DevOps & Automation",
     "Cloud Architecture (AWS)",
     "Full-Stack Web Development",

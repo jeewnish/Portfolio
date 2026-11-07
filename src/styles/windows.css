@@ -123,15 +123,23 @@
 }
 
 .about-content {
-  display: grid;
-  grid-template-columns: 130px 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 22px;
-  align-content: start
+  align-items: stretch;
+  animation: fadeIn .25s ease
+}
+
+.about-profile {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center
 }
 
 .avatar-frame {
-  width: 130px;
-  height: 130px;
+  width: 150px;
+  height: 150px;
   display: grid;
   place-items: center;
   border: 3px solid var(--line);
@@ -144,11 +152,78 @@
 }
 
 .avatar-frame img {
-  width: 112px;
-  height: 112px;
+  width: 132px;
+  height: 132px;
   object-fit: cover;
   border-radius: 50%;
   /* Rounds inner image to match container */
+}
+
+.about-intro-card,
+.about-details {
+  border: 3px solid var(--line);
+  background: var(--paper-2);
+  box-shadow: 0 4px 0 var(--wood-dark)
+}
+
+.about-intro-card {
+  min-height: 134px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 26px;
+  border-radius: 16px
+}
+
+.about-intro-card h2 {
+  margin-bottom: 12px
+}
+
+.about-intro-card p {
+  max-width: 34ch;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45
+}
+
+.about-details {
+  padding: 26px 28px 24px;
+  border-radius: 18px
+}
+
+.about-bio {
+  max-width: 65ch
+}
+
+.about-bio p {
+  margin: 0
+}
+
+.about-bio p + p {
+  margin-top: 14px
+}
+
+.about-interests {
+  margin-top: 24px
+}
+
+.about-interests h3 {
+  margin: 0 0 7px;
+  font-size: 16px
+}
+
+.about-interests ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.65
+}
+
+.about-details .content-actions {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 2px solid rgba(59, 36, 23, .18)
 }
 
 .content-actions {
@@ -549,18 +624,38 @@
 
 @media(max-width:650px) {
   .about-content {
+    gap: 14px
+  }
+
+  .about-profile {
     grid-template-columns: 1fr;
+    justify-items: center;
     gap: 14px
   }
 
   .avatar-frame {
-    width: 96px;
-    height: 96px
+    width: 120px;
+    height: 120px
   }
 
   .avatar-frame img {
-    width: 82px;
-    height: 82px
+    width: 104px;
+    height: 104px
+  }
+
+  .about-intro-card {
+    width: 100%;
+    min-height: 0;
+    padding: 20px;
+    text-align: center
+  }
+
+  .about-intro-card p {
+    max-width: none
+  }
+
+  .about-details {
+    padding: 22px 20px
   }
 
   .app-content {
